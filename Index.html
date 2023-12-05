@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Estatus de pedido Atlas</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Estatus de pedido Atlas</h1>
+      <input type="text" id="inputValor" placeholder="Ingrese el pedido">
+      <button onclick="buscarDato()">Buscar</button>
+      <div id="resultado" class="resultado"></div>
+    </div>
+
+    <script>
+      function buscarDato() {
+        var pedido = document.getElementById("inputValor").value;
+        var resultadoDiv = document.getElementById("resultado");
+
+        // Tu ruta al archivo script.js
+        var rutaScript = "file:///C:/Users/GcatlasIT/Desktop/ATLAS/script.js";
+
+        // Crear una etiqueta script para cargar el script.js
+        var script = document.createElement("script");
+        script.src = rutaScript;
+
+        // Evento onload para ejecutar el script después de cargarlo
+        script.onload = function() {
+          // Llamar a la función del script con el pedido como parámetro
+          var resultado = obtenerEstatusPedido(pedido);
+          resultadoDiv.innerText = resultado;
+        };
+
+        // Agregar la etiqueta script al final del body
+        document.body.appendChild(script);
+      }
+    </script>
+  </body>
+</html>
